@@ -17,4 +17,4 @@ after_success:
   - docker push raghul/multi-client
   - docker push -t raghu4/multi-nginx
   - docker push -t raghu4/multi-server
-  - docker push -t raghu4/multi-worker 
+  - docker push -t raghu4/multi-worker

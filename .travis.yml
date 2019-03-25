@@ -1,12 +1,12 @@
-sudo:required
+sudo: required
 services:
   -docker
 
 before_install:
- - docker build -t raghu4/reat-test -f  ./client/Dockerfile.dev ./client
+ - docker build -t raghu4/react-test -f  ./client/Dockerfile.dev ./client
 
 script:
- - docker run raghu4/react npm test -- -- coverage
+ - docker run raghu4/react-test npm test -- --coverage
 after_success:
   - docker build -t raghu4/multi-client ./client
   - docker build -t raghu4/multi-nginx ./nginx
@@ -14,7 +14,7 @@ after_success:
   - docker build -t raghu4/multi-worker ./worker
   #login docker cli
   - echo "$DOCKER_PASSWORD" | docker login u "$DOCKER_ID" --password-stdin
-  - docker push raghul/multi-client
-  - docker push -t raghu4/multi-nginx
-  - docker push -t raghu4/multi-server
-  - docker push -t raghu4/multi-worker
+  - docker push raghu4/multi-client
+  - docker push  raghu4/multi-nginx
+  - docker push  raghu4/multi-server
+  - docker push  raghu4/multi-worker
